@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html lang="he-IL" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!------------------------ DEMO ------------------------->
+<style type="text/css">
+.tabs-group {
+	font-family: arial;
+	max-width: 1200px;
+	margin: 50px auto;
+	padding: 50px;
+}
+.tabs-list {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.tabs-list > li {
+	margin: 0 15px 0 0;
+}
+.tabs-btn {
+	display: flex;
+	min-width: 130px;
+	min-height: 60px;
+	padding: 8px 20px;
+	align-items: center;
+	justify-content: center;
+	color: #00ADDC;
+	letter-spacing: 0.1em;
+	text-transform:  uppercase;
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 33px;
+	border: 1px solid #00ADDC;
+	border-bottom: none;
+	cursor: pointer;
+}
+.tabs-list > li.active .tabs-btn {
+	background: #00ADDC;
+	color: #fff;
+}
+.tabs-div {
+	background: #F9F9F9;
+	border: 1px solid #00ADDC;
+	padding: 55px 106px;
+}
+ul.tabs-div {
+	flex-wrap: wrap;
+	list-style: none;
+	margin: 0;
+}
+</style>
+<!------------------------ DEMO ------------------------->
+
+
+<style type="text/css">
+.tabs-div:not(.active) {
+	display: none;
+}
+</style>
+
+</head>
+<body>
+	
+
+<!-- Group 1 -->
+<div class="tabs-group">
+	<ul class="tabs-list">
+		<li class="active">
+			<button type="button" id="group1-tab-btn-1" class="tabs-btn" role="tab" aria-controls="group1-tab-div-1" aria-selected="true">
+				לשונית 1
+			</button>
+		</li>
+		<li>
+			<button type="button" id="group1-tab-btn-2" class="tabs-btn" role="tab" aria-controls="group1-tab-div-2" aria-selected="false">
+				לשונית 2
+			</button>
+		</li>
+		<li>
+			<button type="button" id="group1-tab-btn-3" class="tabs-btn" role="tab" aria-controls="group1-tab-div-3" aria-selected="false">
+				לשונית 3
+			</button>
+		</li>
+		<li>
+			<button type="button" id="group1-tab-btn-4" class="tabs-btn" role="tab" aria-controls="group1-tab-div-4" aria-selected="false">
+				לשונית 4
+			</button>
+		</li>
+	</ul>
+	<div id="group1-tab-div-1" class="tabs-div active" role="tabpanel" aria-labelledby="group1-tab-btn-1">
+		תוכן 1
+	</div>
+	<div id="group1-tab-div-2" class="tabs-div" role="tabpanel" aria-labelledby="group1-tab-btn-2">
+		תוכן 2
+	</div>
+	<div id="group1-tab-div-3" class="tabs-div" role="tabpanel" aria-labelledby="group1-tab-btn-3">
+		תוכן 3
+	</div>
+	<div id="group1-tab-div-4" class="tabs-div" role="tabpanel" aria-labelledby="group1-tab-btn-4">
+		תוכן 4
+	</div>
+</div>
+
+
+<!-- Group 2 -->
+<div class="tabs-group">
+	<ul class="tabs-list">
+		<li class="active">
+			<button type="button" id="group2-tab-btn-1" class="tabs-btn" role="tab" aria-controls="group2-tab-div-1" aria-selected="true">
+				לשונית 1
+			</button>
+		</li>
+		<li>
+			<button type="button" id="group2-tab-btn-2" class="tabs-btn" role="tab" aria-controls="group2-tab-div-2" aria-selected="false">
+				לשונית 2
+			</button>
+		</li>
+		<li>
+			<button type="button" id="group2-tab-btn-3" class="tabs-btn" role="tab" aria-controls="group2-tab-div-3" aria-selected="false">
+				לשונית 3
+			</button>
+		</li>
+		<li>
+			<button type="button" id="group2-tab-btn-4" class="tabs-btn" role="tab" aria-controls="group2-tab-div-4" aria-selected="false">
+				לשונית 4
+			</button>
+		</li>
+	</ul>
+	<div id="group2-tab-div-1" class="tabs-div active" role="tabpanel" aria-labelledby="group2-tab-btn-1">
+		תוכן 1
+	</div>
+	<div id="group2-tab-div-2" class="tabs-div" role="tabpanel" aria-labelledby="group2-tab-btn-2">
+		תוכן 2
+	</div>
+	<div id="group2-tab-div-3" class="tabs-div" role="tabpanel" aria-labelledby="group2-tab-btn-3">
+		תוכן 3
+	</div>
+	<div id="group2-tab-div-4" class="tabs-div" role="tabpanel" aria-labelledby="group2-tab-btn-4">
+		תוכן 4
+	</div>
+</div>
+
+<script type="text/javascript">
+//Tabs
+jQuery('.tabs-group').each(function(){
+	var group = jQuery(this);
+	jQuery('.tabs-list > li', group).each(function(i){
+		var li = jQuery(this);
+		var btn = jQuery('.tabs-btn', this);
+		btn.click(function(e){
+			var ariaSelected = btn.attr('aria-selected') === 'true';
+			var div = jQuery('.tabs-div', group).eq(i);
+			
+			jQuery('.tabs-list > li.active', group).not( li ).removeClass('active').find('.tabs-btn').attr('aria-selected', false);
+			li.addClass('active').find('.tabs-btn').attr('aria-selected', ! ariaSelected).focus();
+			
+			jQuery('.tabs-div', group).not( div ).removeClass('active');
+			div.addClass('active');
+		});
+	});
+});
+jQuery('html').keydown( function( e ) {
+	// Tabs
+	if( jQuery('.tabs-list li.active').length && jQuery('.tabs-btn:focus').length ) {
+		var current_tab_li = jQuery('.tabs-btn:focus').closest('li');
+		if( e.keyCode == 37 ) { // Left
+			var next_li = current_tab_li.next('li');
+			if( next_li.length ) {
+				next_li.find('.tabs-btn').click();
+			} else {
+				current_tab_li.parent().find('li:first-child .tabs-btn').click();
+			}
+		}
+		if( e.keyCode == 39 ) { // Right
+			var prev_li = current_tab_li.prev('li');
+			if( prev_li.length ) {
+				prev_li.find('.tabs-btn').click();
+			} else {
+				current_tab_li.parent().find('li:last-child .tabs-btn').click();
+			}
+		}
+	}
+});
+</script>
+
+
+</body>
+</html>
