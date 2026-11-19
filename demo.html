@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>y-tabs demo – accessible, scrollable tabs</title>
+	<meta name="description" content="Demo of y-tabs, a free vanilla JavaScript tabs library. Long tab lists scroll sideways with arrows, touch and mouse drag. Accessible, keyboard support, several groups per page.">
+	<link rel="canonical" href="https://y-tools.dooble.us/ytabs/">
+	<link rel="stylesheet" href="dist/css/ytabs.css">
+	<style type="text/css">
+	body {
+		background: #eceffb;
+		margin: 0;
+		padding: 40px 20px;
+		color: #141833;
+		font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+	}
+	.demo-wrap {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+	.demo-title {
+		margin: 0 0 8px 0;
+		color: #517fe5;
+		font-size: 2.6rem;
+		text-align: center;
+	}
+	.demo-intro {
+		margin: 0 0 32px 0;
+		color: #565c7d;
+		font-size: 1.1rem;
+		line-height: 1.6;
+		text-align: center;
+	}
+	.demo-intro a,
+	.demo-footer a {
+		color: #3560cf;
+	}
+	.demo-card {
+		background: #fff;
+		margin: 0 0 24px 0;
+		padding: 24px;
+		border: 1.5px solid #b9c0e6;
+		border-radius: 16px;
+	}
+	.demo-card h2 {
+		margin: 0 0 16px 0;
+		padding: 0 0 10px 0;
+		border-bottom: 2px solid #d5daf0;
+		font-size: 1.3rem;
+	}
+	.demo-card .tabs-group {
+		margin: 0;
+	}
+	.demo-text {
+		margin: 0 0 12px 0;
+		color: #565c7d;
+		line-height: 1.6;
+	}
+	.demo-text a {
+		color: #3560cf;
+	}
+	.demo-text code {
+		padding: 1px 6px;
+		border-radius: 4px;
+		background: #eef3fd;
+		color: #3560cf;
+		font-family: 'Fira Code', Consolas, monospace;
+		font-size: 0.85rem;
+	}
+	.demo-code {
+		margin: 0;
+		padding: 15px;
+		background: #f6f7fd;
+		border: 1.5px solid #d5daf0;
+		border-radius: 10px;
+		color: #2a2f55;
+		font-family: 'Fira Code', Consolas, monospace;
+		font-size: 13px;
+		line-height: 1.6;
+		overflow-x: auto;
+		tab-size: 4;
+	}
+	.demo-code:focus-visible {
+		outline: 3px solid #517fe5;
+		outline-offset: 2px;
+	}
+	.demo-footer {
+		color: #565c7d;
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+
+<main class="demo-wrap">
+	<h1 class="demo-title">yTabs</h1>
+	<div class="demo-intro">Accessible tabs that scroll sideways when the list is wider than the screen.<br>Docs and live page: <a href="https://y-tools.dooble.us/ytabs/">y-tools.dooble.us/ytabs</a></div>
+
+	<section class="demo-card">
+		<h2>Tabs</h2>
+		<div class="tabs-group">
+			<ul class="tabs-list" role="tablist">
+				<li><button type="button" class="tabs-btn">Credit solutions</button></li>
+				<li><button type="button" class="tabs-btn">Card processing</button></li>
+				<li><button type="button" class="tabs-btn">Risk management</button></li>
+				<li><button type="button" class="tabs-btn">Financial consulting</button></li>
+				<li><button type="button" class="tabs-btn">Insurance</button></li>
+				<li><button type="button" class="tabs-btn">International trade</button></li>
+			</ul>
+
+			<div class="tabs-div">
+				<h3>Customized non-bank credit</h3>
+				<p>We offer a wide range of credit solutions tailored precisely to your business needs. From working capital loans, through advanced equipment financing, to complex import financing solutions.</p>
+				<ul>
+					<li>Fast digital approval process.</li>
+					<li>Flexible repayment terms matched to your business cash flow.</li>
+					<li>No impact on your bank obligo.</li>
+				</ul>
+			</div>
+
+			<div class="tabs-div">
+				<h3>Advanced clearing systems</h3>
+				<p>Smart clearing solutions that let you accept payments from all types of credit cards, locally and worldwide, at the highest security level (PCI DSS standard).</p>
+				<p>Our systems integrate easily with any e-commerce site and cash register, and allow fast crediting to your bank account.</p>
+			</div>
+
+			<div class="tabs-div">
+				<h3>Real-time control and monitoring</h3>
+				<p>Smart technological tools for analyzing and managing financial risks. Our system monitors suspicious transactions, assesses customer stability, and alerts you in real time about anomalies.</p>
+			</div>
+
+			<div class="tabs-div">
+				<h3>Our experts at your service</h3>
+				<p>Personal guidance from a team of experts with decades of experience in finance, banking and capital markets. We analyze your business activity and build a winning strategy together.</p>
+			</div>
+
+			<div class="tabs-div">
+				<h3>Business insurance</h3>
+				<p>Coverage for your business, assets and cash flow.</p>
+			</div>
+
+			<div class="tabs-div">
+				<h3>Import and export</h3>
+				<p>Financing and guidance for international trade.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="demo-card">
+		<h2>A second group on the same page</h2>
+		<div class="tabs-group">
+			<ul class="tabs-list" role="tablist">
+				<li><button type="button" class="tabs-btn">Overview</button></li>
+				<li><button type="button" class="tabs-btn">Features</button></li>
+				<li><button type="button" class="tabs-btn">Support</button></li>
+			</ul>
+
+			<div class="tabs-div">
+				<h3>Overview</h3>
+				<p>Every <code>.tabs-group</code> works on its own, so you can place as many groups as you need on one page.</p>
+			</div>
+
+			<div class="tabs-div">
+				<h3>Features</h3>
+				<p>ARIA roles, a roving tabindex, arrow keys, and a sideways-scrolling tab list. Make the window narrow to see the arrows.</p>
+			</div>
+
+			<div class="tabs-div">
+				<h3>Support</h3>
+				<p>Questions and ideas are welcome on <a href="https://y-tools.dooble.us/ytabs/">the live page</a>.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="demo-card">
+		<h2>1. Download the files</h2>
+		<p class="demo-text">Download <a href="https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/dist/css/ytabs.min.css" download>ytabs.min.css</a> and <a href="https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/dist/js/ytabs.min.js" download>ytabs.min.js</a> (or copy them from the <code>dist</code> folder of this repository) and put them in your project. The readable sources are <a href="https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/dist/css/ytabs.css" download>ytabs.css</a> and <a href="https://y-tools.dooble.us/wp-content/themes/ytools/tools/ytabs/dist/js/ytabs.js" download>ytabs.js</a>. Both files are needed: the CSS styles the tabs and the arrows, and the script adds the scroll arrows and the drag support.</p>
+		<p class="demo-text">Add them to your page. The <code>&lt;script&gt;</code> goes at the end of the <code>&lt;body&gt;</code>, after the tabs markup.</p>
+		<pre class="demo-code" tabindex="0"><code>&lt;link rel="stylesheet" href="ytabs.min.css" /&gt;
+
+&lt;!-- ...your tabs HTML... --&gt;
+
+&lt;script src="ytabs.min.js"&gt;&lt;/script&gt;</code></pre>
+	</section>
+
+	<section class="demo-card">
+		<h2>2. Add the HTML</h2>
+		<p class="demo-text">Wrap each set of tabs in <code>.tabs-group</code>. Inside it, put a <code>ul.tabs-list</code> with a <code>button.tabs-btn</code> in every <code>li</code>, and after the list one <code>.tabs-div</code> panel for every button, in the same order as the buttons. You can use as many groups as you need on a page.</p>
+		<pre class="demo-code" tabindex="0"><code>&lt;!-- Wrapper: one .tabs-group per set of tabs --&gt;
+&lt;div class="tabs-group"&gt;
+
+	&lt;!-- Buttons: class tabs-list on the ul, class tabs-btn on every button --&gt;
+	&lt;ul class="tabs-list" role="tablist"&gt;
+		&lt;li&gt;&lt;button type="button" class="tabs-btn"&gt;First tab&lt;/button&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;button type="button" class="tabs-btn"&gt;Second tab&lt;/button&gt;&lt;/li&gt;
+	&lt;/ul&gt;
+
+	&lt;!-- Panels: class tabs-div, same order as the buttons --&gt;
+	&lt;div class="tabs-div"&gt;
+		&lt;h3&gt;First panel&lt;/h3&gt;
+		&lt;p&gt;Content of the first tab.&lt;/p&gt;
+	&lt;/div&gt;
+
+	&lt;div class="tabs-div"&gt;
+		&lt;h3&gt;Second panel&lt;/h3&gt;
+		&lt;p&gt;Content of the second tab.&lt;/p&gt;
+	&lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+		<p class="demo-text">The script adds the <code>active</code> class and all the <code>aria-*</code> attributes by itself. It also wraps the list in <code>.tabs-nav</code>, which holds the scroll arrows.</p>
+	</section>
+
+	<div class="demo-footer">Use the arrow keys to move between tabs. When the tabs do not fit, swipe or drag the list, or use the arrows.</div>
+</main>
+
+<script src="dist/js/ytabs.js"></script>
+
+</body>
+</html>
